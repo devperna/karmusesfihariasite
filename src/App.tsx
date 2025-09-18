@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Navbar, Container, Row, Col, Button, Badge, Modal, Tabs, Tab } from 'react-bootstrap';
+import { Navbar, Container, Row, Col, Button, Badge, Modal, Tabs, Tab, Nav } from 'react-bootstrap';
 import { useCart } from './context/CartContext';
 import { CartSidePanel } from './components/CartSidePanel';
 import { MenuItemCard } from './components/MenuItemCard';
