@@ -33,17 +33,25 @@ const App = () => {
   return (
     <div className="App">
       <Navbar bg="white" variant="light" expand="lg" sticky="top" className="shadow-sm">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img src="/images/logo/logo.png" width="120" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>
+        <Container className="d-flex justify-content-between align-items-center">
+          {/* Left side (empty or minimal for now) */}
+          <div style={{ width: '120px' }}></div> {/* Placeholder for alignment */}
+
+          {/* Center - Logo */}
+          <Navbar.Brand href="#home" className="mx-auto">
+            <img src="/images/logo/logo.png" width="180" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>
           </Navbar.Brand>
-          <div className="navbar-center-text mx-auto">
-            Deus é Fiel
+
+          {/* Right side - Deus é Fiel and Cart Button */}
+          <div className="d-flex align-items-center">
+            <Navbar.Text className="me-3">
+              Deus é Fiel
+            </Navbar.Text>
+            <Button variant="outline-secondary" onClick={toggleCart} className={`cart-button ${isAnimating ? 'cart-pop' : ''}`}>
+              Carrinho
+              <Badge pill bg="warning" text="dark" className="ms-2">{getCartItemCount()}</Badge>
+            </Button>
           </div>
-          <Button variant="outline-secondary" onClick={toggleCart} className={`cart-button ${isAnimating ? 'cart-pop' : ''}`}>
-            Carrinho
-            <Badge pill bg="warning" text="dark" className="ms-2">{getCartItemCount()}</Badge>
-          </Button>
         </Container>
       </Navbar>
 
