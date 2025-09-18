@@ -1,0 +1,134 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* --- Estilos da Navbar --- */
+.navbar-center-text {
+  font-family: 'Cursive', sans-serif;
+  color: #212529;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.cart-button .badge {
+  font-size: 0.7em;
+}
+
+/* --- Estilos Gerais --- */
+.section-title {
+  color: #a02d2d; /* Vermelho reintroduzido */
+  font-weight: 700;
+}
+
+.feature-divider {
+  margin: 4rem 0;
+}
+
+.current-price {
+  color: #212529;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* --- Card Minimalista --- */
+.card-minimalist {
+  border: none;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card-minimalist:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top-minimalist {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+  cursor: pointer;
+}
+
+.quantity-controls-card .btn {
+  border-radius: 50%;
+}
+
+/* --- Destaque da Semana --- */
+.destaque-semana {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+}
+
+/* --- Abas do Menu --- */
+.nav-tabs .nav-link {
+  color: #6c757d; /* Cinza para abas inativas */
+  font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+  color: #a02d2d; /* Vermelho para a aba ativa */
+  font-weight: 700;
+  border-color: #dee2e6 #dee2e6 #a02d2d;
+  border-bottom-width: 3px;
+}
+
+/* --- Estilos do Carrinho --- */
+.cart-side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  max-width: 90%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.cart-side-panel.open {
+  transform: translateX(0);
+}
+
+.cart-header, .cart-footer {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.cart-footer {
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+
+.cart-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+/* Animação do Carrinho */
+@keyframes cart-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.cart-pop {
+  animation: cart-pop 0.3s ease-in-out;
+}
