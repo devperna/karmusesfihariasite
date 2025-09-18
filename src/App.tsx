@@ -39,16 +39,25 @@ const App = () => {
             Deus é Fiel
           </Navbar.Text>
 
-          {/* Center: Logo (always centered) */}
-          <Navbar.Brand href="#home" className="mx-auto">
-            <img src="/images/logo/logo.png" width="180" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>
-          </Navbar.Brand>
+          {/* Navbar Toggle for mobile */}
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          {/* Right side: Cart Button */}
-          <Button variant="outline-secondary" onClick={toggleCart} className={`cart-button ${isAnimating ? 'cart-pop' : ''}`}>
-            Carrinho
-            <Badge pill bg="warning" text="dark" className="ms-2">{getCartItemCount()}</Badge>
-          </Button>
+          <Navbar.Collapse id="basic-navbar-nav">
+            {/* Center: Logo */}
+            <Nav className="mx-auto">
+              <Navbar.Brand href="#home">
+                <img src="/images/logo/logo.png" width="180" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>
+              </Navbar.Brand>
+            </Nav>
+
+            {/* Right side: Cart Button */}
+            <Nav>
+              <Button variant="outline-secondary" onClick={toggleCart} className={`cart-button ${isAnimating ? 'cart-pop' : ''}`}>
+                Carrinho
+                <Badge pill bg="warning" text="dark" className="ms-2">{getCartItemCount()}</Badge>
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
 
