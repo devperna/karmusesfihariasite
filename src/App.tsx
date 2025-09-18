@@ -34,29 +34,28 @@ const App = () => {
     <div className="App">
       <Navbar bg="white" variant="light" expand="lg" sticky="top" className="shadow-sm">
         <Container>
-          {/* Left side: Deus é Fiel (visible on larger screens, or always) */}
-          <Navbar.Text className="d-none d-lg-block me-auto">
-            Deus é Fiel
-          </Navbar.Text>
-
           {/* Navbar Toggle for mobile */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          <Navbar.Collapse id="basic-navbar-nav">
-            {/* Center: Logo */}
-            <Nav className="mx-auto">
-              <Navbar.Brand href="#home">
-                <img src="/images/logo/logo.png" width="180" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>
-              </Navbar.Brand>
-            </Nav>
+          {/* Center: Logo (always centered) */}
+          <Navbar.Brand href="#home" className="mx-auto">
+            <img src="/images/logo/logo.png" width="180" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>
+          </Navbar.Brand>
 
-            {/* Right side: Cart Button */}
-            <Nav>
-              <Button variant="outline-secondary" onClick={toggleCart} className={`cart-button ${isAnimating ? 'cart-pop' : ''}`}>
-                Carrinho
-                <Badge pill bg="warning" text="dark" className="ms-2">{getCartItemCount()}</Badge>
-              </Button>
+          {/* Right side: Cart Button (always visible) */}
+          <Button variant="outline-secondary" onClick={toggleCart} className={`cart-button ${isAnimating ? 'cart-pop' : ''}`}>
+            Carrinho
+            <Badge pill bg="warning" text="dark" className="ms-2">{getCartItemCount()}</Badge>
+          </Button>
+
+          <Navbar.Collapse id="basic-navbar-nav">
+            {/* Deus é Fiel inside collapse */}
+            <Nav className="me-auto">
+              <Navbar.Text>
+                Deus é Fiel
+              </Navbar.Text>
             </Nav>
+            {/* Other Nav items if any */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
