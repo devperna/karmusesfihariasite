@@ -31,20 +31,22 @@ export const VideoPlayer = () => {
 
   return (
     <div className="video-player-container mb-5">
-        <h2 className="mb-4 text-center section-title">Destaques</h2>
-        <video 
-            ref={videoRef}
-            width="100%" 
-            height="auto" 
-            onEnded={handleVideoEnded}
-            autoPlay
-            muted // Autoplay geralmente requer que o vídeo esteja sem som inicialmente
-            playsInline
-            controls // Adiciona controles de play, pause, volume, etc.
-            className="rounded-3"
-        >
-            {/* O browser não suporta o elemento de vídeo. */}
-        </video>
+        <div className="row justify-content-center">
+            <div className="col-md-5">
+                <video 
+                    ref={videoRef}
+                    width="100%" 
+                    height="auto" 
+                    onEnded={handleVideoEnded}
+                    autoPlay
+                    muted // Autoplay geralmente requer que o vídeo esteja sem som inicialmente
+                    playsInline
+                    className="img-fluid rounded-3" // Using img-fluid for responsiveness and rounded-3 for styling
+                >
+                    {/* O browser não suporta o elemento de vídeo. */}
+                </video>
+            </div>
+        </div>
     </div>
   );
 };
