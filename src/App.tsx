@@ -3,8 +3,8 @@ import { Navbar, Container, Row, Col, Button, Badge, Modal, Tabs, Tab } from 're
 import { useCart } from './context/CartContext';
 import { CartSidePanel } from './components/CartSidePanel';
 import { MenuItemCard } from './components/MenuItemCard';
+import { VideoPlayer } from './components/VideoPlayer';
 import {
-  destaqueId,
   combos,
   esfihasTradicionais,
   esfihasPremiumSalgadas,
@@ -13,10 +13,6 @@ import {
   bebidas,
   MenuItem
 } from './data/menuData';
-
-// Encontra o item de destaque
-const allItems = [...esfihasTradicionais, ...esfihasPremiumSalgadas, ...esfihasTradicionaisDoces, ...esfihasPremiumDoces];
-const destaqueItem = allItems.find(item => item.id === destaqueId);
 
 const App = () => {
   const { toggleCart, getCartItemCount, isAnimating, addToCart } = useCart();
@@ -47,22 +43,7 @@ const App = () => {
       <CartSidePanel />
 
       <Container className="my-5">
-        {destaqueItem && (
-          <div className="destaque-semana">
-            <h2 className="mb-4 text-center section-title">Destaque da Semana</h2>
-            <Row className="align-items-center">
-              <Col md={5}>
-                <img src={destaqueItem.imagem} alt={destaqueItem.nome} className="img-fluid rounded-3" style={{cursor: 'pointer'}} onClick={() => handleImageClick(destaqueItem.imagem, destaqueItem.nome)}/>
-              </Col>
-              <Col md={7}>
-                <h3 className="fw-bold">{destaqueItem.nome}</h3>
-                <p className="lead text-muted">{destaqueItem.descricao}</p>
-                <p className="h4 fw-bold current-price">R$ {destaqueItem.preco.toFixed(2)}</p>
-                <Button variant="warning" size="lg" onClick={() => addToCart(destaqueItem)}>Adicionar ao Pedido</Button>
-              </Col>
-            </Row>
-          </div>
-        )}
+        <VideoPlayer />
 
         <hr className="feature-divider" />
 
