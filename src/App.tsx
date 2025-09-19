@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar bg="white" variant="light" expand="lg" sticky="top" className="shadow-sm">
+      <Navbar bg="warning" variant="light" expand="lg" sticky="top" className="shadow-sm">
         <Container>
           <Navbar.Brand href="#home" className="mx-auto">
             <img src="/images/logo/logo.png" width="180" className="d-inline-block align-top" alt="Karmu's Esfihas Logo"/>

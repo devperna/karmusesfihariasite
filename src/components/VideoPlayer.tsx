@@ -30,9 +30,9 @@ export const VideoPlayer = () => {
   }, [currentVideoIndex]);
 
   return (
-    <div className="video-player-container mb-5">
+    <div className="video-player-container mb-5 p-3 border rounded shadow-sm">
         <div className="row justify-content-center">
-            <div className="col-md-5">
+            <div className="col-md-12"> {/* Changed to col-md-12 to fit within the smaller parent container */}
                 <video 
                     ref={videoRef}
                     width="100%" 
@@ -41,10 +41,12 @@ export const VideoPlayer = () => {
                     autoPlay
                     muted // Autoplay geralmente requer que o vídeo esteja sem som inicialmente
                     playsInline
+                    loop // Adicionado para fazer o vídeo repetir
                     className="img-fluid rounded-3" // Using img-fluid for responsiveness and rounded-3 for styling
                 >
                     {/* O browser não suporta o elemento de vídeo. */}
                 </video>
+                <p className="text-center mt-3 mb-0 fst-italic">"A vida é como uma esfiha, aproveite cada pedaço!"</p>
             </div>
         </div>
     </div>
