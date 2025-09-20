@@ -32,7 +32,7 @@ export const VideoPlayer = () => {
   return (
     <div className="video-player-container mb-5 p-3 border rounded shadow-sm">
         <div className="row justify-content-center">
-            <div className="col-md-8 mx-auto"> {/* Changed to col-md-8 and added mx-auto to center */}
+            <div className="col-md-6 mx-auto"> {/* Changed to col-md-8 and added mx-auto to center */}
                 <video 
                     ref={videoRef}
                     width="100%" 

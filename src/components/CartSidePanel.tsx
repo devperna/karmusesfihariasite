@@ -60,7 +60,7 @@ Gostaria de fazer o pedido!
     <div className={`cart-side-panel ${isCartOpen ? 'open' : ''}`}>
       <div className="cart-header">
         <h3>Seu Pedido</h3>
-        <CloseButton onClick={toggleCart} variant="white" />
+        <Button variant="light" onClick={toggleCart} className="p-1 lh-1">X</Button>
       </div>
       <div className="cart-body">
         {cartItems.length === 0 ? (
