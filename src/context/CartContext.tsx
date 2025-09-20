@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { MenuItem } from '../data/menuData';
+import { MenuItem } from '../types';
 
 export interface CartItem extends MenuItem {
   quantity: number;
@@ -86,7 +86,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce((total, item) => total + item.preco * item.quantity, 0);
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const getCartItemCount = () => {

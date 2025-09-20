@@ -1,29 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Row, Col, Button, Badge, Modal, Tabs, Tab } from 'react-bootstrap';
 import { useCart } from './context/CartContext';
 import { CartSidePanel } from './components/CartSidePanel';
 import { MenuItemCard } from './components/MenuItemCard';
 import { VideoPlayer } from './components/VideoPlayer';
-import {
-  combos,
-  esfihasTradicionais,
-  esfihasPremiumSalgadas,
-  esfihasTradicionaisDoces,
-  esfihasPremiumDoces,
-  bebidas,
-  MenuItem
-} from './data/menuData';
+import { supabase } from './supabaseClient';
+import { MenuItem } from './types';
 
 const App = () => {
   const { toggleCart, getCartItemCount, isAnimating, addToCart } = useCart();
   
   const [modalShow, setModalShow] = useState(false);
   const [selectedImageData, setSelectedImageData] = useState({ src: '', name: '' });
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      const { data, error } = await supabase
+        .from('menu_items')
+        .select('*');
+      if (error) {
+        console.error('Error fetching menu items:', error);
+      } else {
+        setMenuItems(data);
+      }
+    };
+
+    fetchMenuItems();
+  }, []);
 
   const handleImageClick = (src: string, name: string) => {
     setSelectedImageData({ src, name });
     setModalShow(true);
   };
+
+  const combos = menuItems.filter(item => item.category_id === 3);
+  const esfihasTradicionais = menuItems.filter(item => item.category_id === 1);
+  const esfihasPremiumSalgadas = menuItems.filter(item => item.category_id === 4);
+  const esfihasTradicionaisDoces = menuItems.filter(item => item.category_id === 2);
+  const esfihasPremiumDoces = menuItems.filter(item => item.category_id === 5);
+  const bebidas = menuItems.filter(item => item.category_id === 6);
 
   return (
     <div className="App">

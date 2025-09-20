@@ -22,10 +22,10 @@ export const CartSidePanel = () => {
   const handleCheckout = () => {
     const phoneNumber = '5544999776990'; // Substituir pelo número do WhatsApp da loja
     
-    let message = `*Novo Pedido Karmu's Esfihas*
+    let message = `*Novo Pedido Karmu\'s Esfihas*
 
 *Itens:*
-${cartItems.map(item => `${item.quantity}x ${item.nome} - R$ ${(item.preco * item.quantity).toFixed(2)}`).join('\n')}
+${cartItems.map(item => `${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`).join('\n')}
 
 *Total:* R$ ${getCartTotal().toFixed(2)}
 
@@ -70,8 +70,8 @@ Gostaria de fazer o pedido!
             {cartItems.map(item => (
               <ListGroup.Item key={item.id} className="d-flex flex-column">
                 <div className="d-flex justify-content-between">
-                  <span className="fw-bold">{item.nome}</span>
-                  <strong>R$ {(item.preco * item.quantity).toFixed(2)}</strong>
+                  <span className="fw-bold">{item.name}</span>
+                  <strong>R$ {(item.price * item.quantity).toFixed(2)}</strong>
                 </div>
                 <div className="d-flex align-items-center justify-content-between mt-2">
                   <div className="quantity-controls">
