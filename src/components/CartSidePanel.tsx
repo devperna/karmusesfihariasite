@@ -17,10 +17,12 @@ export const CartSidePanel = () => {
 
   const [deliveryOption, setDeliveryOption] = useState('delivery');
   const [observations, setObservations] = useState('');
+  const [address, setAddress] = useState('');
 
   const handleCheckout = () => {
     const phoneNumber = '5544999776990'; // Substituir pelo número do WhatsApp da loja
-    const message = `*Novo Pedido Karmu's Esfihas*
+    
+    let message = `*Novo Pedido Karmu's Esfihas*
 
 *Itens:*
 ${cartItems.map(item => `${item.quantity}x ${item.nome} - R$ ${(item.preco * item.quantity).toFixed(2)}`).join('\n')}
@@ -28,7 +30,16 @@ ${cartItems.map(item => `${item.quantity}x ${item.nome} - R$ ${(item.preco * ite
 *Total:* R$ ${getCartTotal().toFixed(2)}
 
 *Opção de Entrega:* ${deliveryOption === 'delivery' ? 'Entrega' : 'Retirar na Loja'}
+`;
 
+    if (deliveryOption === 'delivery') {
+      message += `
+*Endereço de Entrega:*
+${address || 'Endereço não informado'}
+`;
+    }
+
+    message += `
 *Observações:*
 ${observations || 'Nenhuma'}
 
@@ -109,6 +120,17 @@ Gostaria de fazer o pedido!
               onChange={() => setDeliveryOption('pickup')}
             />
         </Form.Group>
+        {deliveryOption === 'delivery' && (
+          <Form.Group className="mb-3">
+            <Form.Label>Endereço de Entrega:</Form.Label>
+            <Form.Control 
+              type="text" 
+              placeholder="Ex: Rua, Número, Bairro"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </Form.Group>
+        )}
         <Button variant="warning" className="w-100 fw-bold" onClick={handleCheckout} disabled={cartItems.length === 0}>Finalizar Pedido via WhatsApp</Button>
       </div>
     </div>
